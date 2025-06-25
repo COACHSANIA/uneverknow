@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Empowered Self: A Guide to Boundaries & Inner Peace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Black background */
+            color: #FFFFFF; /* White text for normal content */
+        }
+        :root {
+            --heading-color: #ff19cf; /* Headings/Subheadings */
+            --accent-color: #51d2e4; /* Accent color for elements */
+            --secondary-accent-color: #FF6B6B; /* Vibrant Red */
+            --tertiary-accent-color: #FFA700; /* Vibrant Orange */
+            --section-bg-dark: #2D3142; /* Dark gray for section backgrounds */
+            --text-color-light: #FFFFFF; /* White text */
+            --text-color-dark: #ff19cf; /* Headings text color */
+        }
+        h1, h2, h3 {
+            color: var(--heading-color);
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flowchart-step {
+            border-color: var(--accent-color);
+            color: var(--text-color-light); /* White text */
+            background-color: #1a1a1a; /* Darker step background */
+        }
+        .flowchart-arrow {
+            color: var(--accent-color);
+        }
+        .info-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8); /* Slightly smaller initial scale for "flip" effect */
+            opacity: 0;
+            visibility: hidden;
+            background-color: var(--section-bg-dark);
+            color: var(--text-color-light);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+            max-width: 90%;
+            text-align: center;
+            border: 2px solid var(--accent-color);
+        }
+        .info-card.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .info-card h3 {
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+        }
+        .info-card button {
+            background-color: var(--accent-color);
+            color: var(--section-bg-dark); /* Dark text on light accent button */
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .info-card button:hover {
+            background-color: #79e9f8; /* Lighter shade on hover */
+        }
+        .fact-box {
+            background-color: #1a1a1a; /* Very dark background for facts */
+            border-left: 4px solid var(--secondary-accent-color); /* Vibrant red accent */
+            padding: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #ccc; /* Slightly lighter text for facts */
+        }
+        .stopp-explanation {
+            background-color: #1a1a1a;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        .stopp-explanation strong {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <header class="bg-black text-center p-8 md:p-12 shadow-md border-b-2" style="border-color: var(--accent-color);">
+        <h1 class="text-4xl md:text-6xl font-black uppercase" style="color: var(--heading-color);">The <span style="color: var(--accent-color);">Empowered</span> Self</h1>
+        <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto" style="color: var(--text-color-light);">An interactive guide to building healthy boundaries, navigating relationships, and cultivating unshakable inner peace.</p>
+    </header>
+
+    <main class="p-4 md:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <section id="blueprint" class="lg:col-span-2 rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-3xl font-bold text-center mb-4">The Blueprint of Boundaries</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8" style="color: var(--text-color-light);">Boundaries are not walls to keep others out; they are the lines you draw to define who you are, what you stand for, and how you expect to be treated. They are a radical act of self-care and the foundation of all healthy relationships.</p>
+                
+                <div class="fact-box">
+                    <p>Psychological research indicates that people with clear boundaries experience lower stress levels and higher self-esteem. They are also perceived as more trustworthy by others!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="border-2 border-dashed rounded-lg p-4" style="border-color: var(--accent-color);">
+                        <h3 class="text-xl font-bold" style="color: var(--accent-color);">Physical</h3>
+                        <p class="mt-2 text-sm" style="color: var(--text-color-light);">Your space, your body, your touch preferences. <br> <span class="font-bold">Example:</span> "I'm not a hugger, but I appreciate the thought."</p>
+                    </div>
+                    <div class="border-2 border-dashed rounded-lg p-4" style="border-color: var(--secondary-accent-color);">
+                        <h3 class="text-xl font-bold" style="color: var(--secondary-accent-color);">Emotional</h3>
+                        <p class="mt-2 text-sm" style="color: var(--text-color-light);">Your feelings are valid. You decide what to share and what is off-limits. <br> <span class="font-bold">Example:</span> "I'm not comfortable discussing this topic right now."</p>
+                    </div>
+                    <div class="border-2 border-dashed rounded-lg p-4" style="border-color: var(--tertiary-accent-color);">
+                        <h3 class="text-xl font-bold" style="color: var(--tertiary-accent-color);">Mental & Time</h3>
+                        <p class="mt-2 text-sm" style="color: var(--text-color-light);">Your thoughts, beliefs, and time are valuable resources. <br> <span class="font-bold">Example:</span> "I can't take on new projects, my schedule is full."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="spectrum" class="rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-2xl font-bold text-center mb-4">Who Needs Your Strongest Boundaries?</h2>
+                <p class="text-center text-sm mb-4" style="color: var(--text-color-light);">Certain behaviors drain your energy more than others. Recognizing these patterns allows you to proactively protect your peace. This chart shows the relative emotional drain of interacting with different personality types without firm boundaries.</p>
+                <div class="chart-container">
+                    <canvas id="toxicTypesChart"></canvas>
+                </div>
+            </section>
+
+            <section id="dynamics" class="rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-2xl font-bold text-center mb-4">The Relationship Spectrum</h2>
+                   <p class="text-center text-sm mb-4" style="color: var(--text-color-light);">Relationships exist on a spectrum. Healthy dynamics energize you, while unhealthy ones deplete you. Here's how to spot the difference.</p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-green-400 text-center mb-2">Healthy ✔</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li class="p-2 rounded-lg" style="background-color: #1a3b1a;">Open Communication</li>
+                            <li class="p-2 rounded-lg" style="background-color: #1a3b1a;">Mutual Respect</li>
+                            <li class="p-2 rounded-lg" style="background-color: #1a3b1a;">Trust & Honesty</li>
+                            <li class="p-2 rounded-lg" style="background-color: #1a3b1a;">Independence</li>
+                            <li class="p-2 rounded-lg" style="background-color: #1a3b1a;">Equality & Support</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-400 text-center mb-2">Unhealthy ✖</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li class="p-2 rounded-lg" style="background-color: #4d2d2d;">Control & Jealousy</li>
+                            <li class="p-2 rounded-lg" style="background-color: #4d2d2d;">Constant Criticism</li>
+                            <li class="p-2 rounded-lg" style="background-color: #4d2d2d;">Dishonesty & Blame</li>
+                            <li class="p-2 rounded-lg" style="background-color: #4d2d2d;">Isolation</li>
+                            <li class="p-2 rounded-lg" style="background-color: #4d2d2d;">Feeling Drained</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fact-box">
+                    <p>A study by Dr. John Gottman found that healthy relationships have a 5:1 ratio of positive to negative interactions.</p>
+                </div>
+            </section>
+            
+            <section id="redflags" class="lg:col-span-2 rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-3xl font-bold text-center mb-2">Navigating Red Flags</h2>
+                <p class="text-center max-w-3xl mx-auto mb-6" style="color: var(--text-color-light);">Red flags are not stop signs, but they are crucial warning signs. They signal a need for caution, communication, and clear boundaries. This chart illustrates the danger dimensions of common red flags.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                           <h3 class="text-xl font-bold mb-4">Red Flag Danger Profile</h3>
+                           <p class="text-sm mb-4" style="color: var(--text-color-light);">The Radar Chart visualizes different facets of harm associated with common red flags. "Manipulation" reflects psychological games, "Control" indicates attempts to limit your autonomy, and "Erosion" shows the potential to damage your self-esteem over time.</p>
+                           <div class="chart-container">
+                               <canvas id="redFlagsChart"></canvas>
+                           </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Your Action Plan Flowchart</h3>
+                        <p class="text-sm mb-4" style="color: var(--text-color-light);">When you spot a red flag, don't ignore it. Follow a structured response to protect yourself and address the behavior constructively.</p>
+                        <div class="space-y-4">
+                            <div class="flowchart-step border-l-4 p-3 rounded-r-lg"><strong>1. Identify:</strong> Acknowledge the specific behavior. Don't make excuses for it.</div>
+                            <div class="flex justify-center"><span class="flowchart-arrow text-2xl font-bold">↓</span></div>
+                            <div class="flowchart-step border-l-4 p-3 rounded-r-lg"><strong>2. Pause & Regulate:</strong> Take a breath. Use the STOPP technique*. Do not react impulsively. Your power is in your response.</div>
+                            <div class="flex justify-center"><span class="flowchart-arrow text-2xl font-bold">↓</span></div>
+                            <div class="flowchart-step border-l-4 p-3 rounded-r-lg"><strong>3. Communicate (if safe):</strong> Use an "I" statement. "I feel [emotion] when [behavior] occurs. I need [specific change]."</div>
+                             <div class="flex justify-center"><span class="flowchart-arrow text-2xl font-bold">↓</span></div>
+                            <div class="flowchart-step border-l-4 p-3 rounded-r-lg"><strong>4. Set a Consequence:</strong> "If this continues, I will [action, e.g., end the conversation, leave]."</div>
+                             <div class="flex justify-center"><span class="flowchart-arrow text-2xl font-bold">↓</span></div>
+                             <div class="flowchart-step border-l-4 p-3 rounded-r-lg"><strong>5. Follow Through:</strong> Your actions teach people how to treat you. Enforce the boundary you set.</div>
+                        </div>
+                           <div class="stopp-explanation">
+                                <strong>*STOPP Technique:</strong> A quick mindfulness tool for emotional regulation.
+                                <ul>
+                                    <li><strong>S</strong>top! (Pause for a moment)</li>
+                                    <li><strong>T</strong>ake a Breath (Notice your breathing)</li>
+                                    <li><strong>O</strong>bserve (Identify thoughts, feelings, sensations)</li>
+                                    <li><strong>P</strong>ull Back / Put in Some Perspective (Consider context, challenge interpretations)</li>
+                                    <li><strong>P</strong>ractice What Works / Proceed (Choose a healthy response)</li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="communication" class="rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-2xl font-bold text-center mb-4">The Power of Assertive Communication</h2>
+                <p class="text-center text-sm mb-4" style="color: var(--text-color-light);">Assertiveness isn't aggression. It's clarity, confidence, and respect for yourself and others. These components are key to expressing your boundaries effectively.</p>
+                   <div class="chart-container h-80 md:h-96">
+                       <canvas id="communicationDonutChart"></canvas>
+                   </div>
+                <div class="fact-box">
+                    <p>NLP (Neuro-Linguistic Programming) suggests that mirroring body language can subconsciously build rapport, making communication smoother.</p>
+                </div>
+            </section>
+            
+            <section class="rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                   <h2 class="text-2xl font-bold text-center mb-4">Ready-Made NLP Scripts</h2>
+                   <p class="text-center text-sm mb-4" style="color: var(--text-color-light);">Sometimes you need the right words. Here are scripts for common toxic situations, inspired by NLP and CBT techniques.</p>
+                   <div class="space-y-3">
+                       <div class="p-3 rounded-lg" style="background-color: #1a1a1a;">
+                            <h4 class="font-bold">For Guilt-Tripping:</h4>
+                            <p class="text-sm" style="color: var(--text-color-light);">"I understand you're disappointed, but I will not be made to feel guilty for my decision. My choice stands."</p>
+                       </div>
+                       <div class="p-3 rounded-lg" style="background-color: #1a1a1a;">
+                            <h4 class="font-bold">For Constant Criticism:</h4>
+                            <p class="text-sm" style="color: var(--text-color-light);">"I am open to constructive feedback, but I will not tolerate being constantly belittled. Please speak to me respectfully."</p>
+                       </div>
+                       <div class="p-3 rounded-lg" style="background-color: #1a1a1a;">
+                            <h4 class="font-bold">For Passive Aggression:</h4>
+                            <p class="text-sm" style="color: var(--text-color-light);">"I'm sensing there's more to what you're saying. Can you please be direct with me about what's on your mind?"</p>
+                       </div>
+                       <div class="p-3 rounded-lg" style="background-color: #1a1a1a;">
+                            <h4 class="font-bold">For a Chronic Victim:</h4>
+                            <p class="text-sm" style="color: var(--text-color-light);">"It sounds like you're in a tough spot. I am here to listen, but I cannot solve this for you. What do you think you can do?"</p>
+                       </div>
+                   </div>
+            </section>
+
+            <section id="control" class="lg:col-span-2 rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-3xl font-bold text-center mb-4">Mastering Your Inner World</h2>
+                   <p class="text-center max-w-3xl mx-auto mb-8" style="color: var(--text-color-light);">True power isn't about controlling others; it's about mastering yourself. The Stoic "Dichotomy of Control" is your guide. Focus your energy where it creates real change: within.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="text-center p-6 rounded-lg" style="background-color: var(--accent-color); color: var(--section-bg-dark);">
+                        <h3 class="text-2xl font-bold">IN YOUR CONTROL</h3>
+                        <ul class="mt-4 space-y-2 text-left list-disc list-inside">
+                            <li>Your words & actions</li>
+                            <li>Your thoughts & attitude</li>
+                            <li>Your choices & effort</li>
+                            <li>Your boundaries</li>
+                            <li>How you respond to emotions</li>
+                            <li>Who you give your time to</li>
+                        </ul>
+                    </div>
+                    <div class="text-center p-6 rounded-lg" style="background-color: var(--secondary-accent-color); color: var(--section-bg-dark);">
+                        <h3 class="text-2xl font-bold">OUT OF YOUR CONTROL</h3>
+                        <ul class="mt-4 space-y-2 text-left list-disc list-inside">
+                            <li>Others' actions & words</li>
+                            <li>Others' opinions of you</li>
+                            <li>Others' emotions & reactions</li>
+                            <li>The past & the future</li>
+                            <li>What others think or believe</li>
+                            <li>Their choices and mistakes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fact-box">
+                    <p>Julian Rotter's concept of Locus of Control suggests that people with an 'internal locus' (believing they control their own destiny) tend to be more resilient and achieve more.</p>
+                </div>
+            </section>
+
+            <section id="peace" class="lg:col-span-2 rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-3xl font-bold text-center mb-4">Strategies for Inner Peace & Resilience</h2>
+                <p class="text-center max-w-3xl mx-auto mb-6" style="color: var(--text-color-light);">Cultivating inner calm is an active practice. Tap on the bubbles below to reveal various strategies for building long-term resilience and peace. The size of the bubble suggests its potential impact.</p>
+                <div class="chart-container h-96 md:h-[500px] max-h-[500px]">
+                    <canvas id="peaceStrategiesChart"></canvas>
+                </div>
+
+                <div id="infoCard" class="info-card">
+                    <h3 id="cardTitle"></h3>
+                    <p id="cardDescription" class="text-sm"></p>
+                    <button id="closeCard">Got It!</button>
+                </div>
+            </section>
+
+            <section id="wisdom" class="lg:col-span-2 rounded-lg shadow-md p-6" style="background-color: var(--section-bg-dark);">
+                <h2 class="text-3xl font-bold text-center mb-6">Wisdom from the Experts</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                       <div class="border-l-4 p-4 rounded-r-lg" style="border-color: var(--accent-color); background-color: #1a1a1a;">
+                            <blockquote class="text-sm italic">"The most compassionate people are also the most boundaried."</blockquote>
+                            <cite class="mt-2 block font-bold not-italic text-right" style="color: var(--accent-color);">- Brené Brown</cite>
+                       </div>
+                       <div class="border-l-4 p-4 rounded-r-lg" style="border-color: var(--secondary-accent-color); background-color: #1a1a1a;">
+                            <blockquote class="text-sm italic">"If a boundary leads to a relationship ending, it worked. Its purpose is to protect your mental health."</blockquote>
+                            <cite class="mt-2 block font-bold not-italic text-right" style="color: var(--secondary-accent-color);">- Mark Manson</cite>
+                       </div>
+                       <div class="border-l-4 p-4 rounded-r-lg" style="border-color: var(--tertiary-accent-color); background-color: #1a1a1a;">
+                            <blockquote class="text-sm italic">"What you avoid controls you! Facing discomfort is the key to personal and professional growth."</blockquote>
+                            <cite class="mt-2 block font-bold not-italic text-right" style="color: var(--tertiary-accent-color);">- Alex Hormozi</cite>
+                       </div>
+                       <div class="border-l-4 p-4 rounded-r-lg" style="border-color: var(--heading-color); background-color: #1a1a1a;">
+                            <blockquote class="text-sm italic">"It's not anyone else's job to uphold your boundaries. It's up to you. If your boundaries are crossed, it's you crossing them."</blockquote>
+                            <cite class="mt-2 block font-bold not-italic text-right" style="color: var(--heading-color);">- Gabby Bernstein</cite>
+                       </div>
+                       <div class="border-l-4 p-4 rounded-r-lg" style="border-color: var(--accent-color); background-color: #1a1a1a;">
+                            <blockquote class="text-sm italic">"Boundaries focus on your needs & triggers, not on controlling others. They are acts of self-care."</blockquote>
+                            <cite class="mt-2 block font-bold not-italic text-right" style="color: var(--accent-color);">- Jay Shetty</cite>
+                       </div>
+                       <div class="border-l-4 p-4 rounded-r-lg" style="border-color: var(--secondary-accent-color); background-color: #1a1a1a;">
+                             <blockquote class="text-sm italic">"Win through your actions, never through argument. Consistent, boundary-enforcing actions are your power."</blockquote>
+                             <cite class="mt-2 block font-bold not-italic text-right" style="color: var(--secondary-accent-color);">- Robert Greene</cite>
+                       </div>
+                </div>
+                <div class="fact-box">
+                    <p>Stoic philosophy, practiced for over 2,000 years, emphasizes focusing only on what is within your control for ultimate tranquility.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="text-center p-6 mt-8 bg-black shadow-inner border-t-2" style="border-color: var(--accent-color);">
+        <p style="color: var(--text-color-light);">Your journey to an empowered self is continuous. Revisit, reflect, and keep practicing.</p>
+        <div class="mt-4 text-sm" style="color: var(--text-color-light);">
+            Follow Empowered by Sania:
+            <a href="https://www.youtube.com/@EmpoweredbySania" target="_blank" class="mx-2" style="color: var(--accent-color);">YouTube</a> |
+            <a href="https://www.instagram.com/empowered.bysania/" target="_blank" class="mx-2" style="color: var(--accent-color);">Instagram</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">© 2025 Empowered by Sania Media. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const wrapText = (text, maxChars) => {
+                if (typeof text !== 'string' || text.length <= maxChars) {
+                    return text;
+                }
+                const words = text.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxChars && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if (currentLine.length > 0) {
+                    lines.push(currentLine);
+                }
+                return lines;
+            };
+            
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+            
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 10,
+                                color: '#FFFFFF' // White labels for legend
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#FFFFFF' }, // White ticks
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' } // Light grid lines
+                    },
+                    y: {
+                        ticks: { color: '#FFFFFF' }, // White ticks
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' } // Light grid lines
+                    }
+                }
+            };
+            
+            const toxicTypesCtx = document.getElementById('toxicTypesChart').getContext('2d');
+            new Chart(toxicTypesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Emotional Manipulator', 'Narcissist', 'Energy Drainer', 'Chronic Victim', 'Guilt-Tripper'].map(label => wrapText(label, 16)),
+                    datasets: [{
+                        label: 'Relative Emotional Drain',
+                        data: [90, 85, 75, 70, 65],
+                        backgroundColor: ['#FF19CF', '#51D2E4', '#FF6B6B', '#FFA700', '#9B59B6'], // Use new color scheme
+                        borderColor: '#000000', // Black border for contrast
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const redFlagsCtx = document.getElementById('redFlagsChart').getContext('2d');
+            new Chart(redFlagsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Controlling Behavior', 'Gaslighting', 'Constant Criticism', 'Emotional Manipulation', 'Jealousy'].map(label => wrapText(label, 16)),
+                    datasets: [{
+                        label: 'Danger Profile',
+                        data: [8, 9, 7, 9, 6],
+                        backgroundColor: 'rgba(255, 25, 207, 0.2)', // Heading color with transparency
+                        borderColor: '#ff19cf', // Heading color
+                        pointBackgroundColor: '#ff19cf',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#ff19cf'
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' }, // Light grid lines
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }, // Light grid lines
+                            pointLabels: { font: { size: 11, color: '#FFFFFF' } }, // White point labels
+                            suggestedMin: 0,
+                            suggestedMax: 10,
+                            ticks: {
+                                color: '#FFFFFF', // White tick labels
+                                backdropColor: 'rgba(0,0,0,0)' // Transparent background for ticks
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const communicationDonutCtx = document.getElementById('communicationDonutChart').getContext('2d');
+            new Chart(communicationDonutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['"I" Statements', 'Active Listening', 'Clarity of Need', 'Firm Tone', 'Stating Consequences'],
+                    datasets: [{
+                        label: 'Components of Assertiveness',
+                        data: [30, 25, 20, 15, 10],
+                        backgroundColor: ['#51D2E4', '#FF19CF', '#FF6B6B', '#FFA700', '#9B59B6'], // Use new color scheme
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    plugins: {
+                        legend: { position: 'right' },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const peaceStrategiesCtx = document.getElementById('peaceStrategiesChart').getContext('2d');
+            const infoCard = document.getElementById('infoCard');
+            const cardTitle = document.getElementById('cardTitle');
+            const cardDescription = document.getElementById('cardDescription');
+            const closeCardBtn = document.getElementById('closeCard');
+
+            const peaceStrategiesData = {
+                datasets: [{
+                    label: 'Mindfulness & Meditation',
+                    data: [{ x: 5, y: 4.5, r: 25, title: 'Mindfulness & Meditation', description: 'Daily practice improves focus and self-awareness, reducing impulsive reactions and promoting inner calm.' }],
+                    backgroundColor: '#51D2E4' // Accent color
+                }, {
+                    label: 'Consistent Self-Care',
+                    data: [{ x: 4, y: 3.5, r: 22, title: 'Consistent Self-Care', description: 'Prioritizing rest, nutrition, and activities that replenish your energy is vital for sustained well-being.' }], // Adjusted y-coordinate
+                    backgroundColor: '#FF6B6B' // Secondary accent
+                }, {
+                    label: 'Journaling & Reflection',
+                    data: [{ x: 7, y: 4, r: 18, title: 'Journaling & Reflection', description: 'Regularly writing down thoughts and feelings helps process emotions, gain clarity, and track progress.' }],
+                    backgroundColor: '#FFA700' // Tertiary accent
+                },{
+                    label: 'Positive Social Connections',
+                    data: [{ x: 3, y: 4.5, r: 20, title: 'Positive Social Connections', description: 'Surrounding yourself with supportive individuals provides validation, comfort, and a sense of belonging.' }],
+                    backgroundColor: '#9B59B6' // A purple shade
+                }, {
+                    label: 'Physical Exercise',
+                    data: [{ x: 3, y: 3, r: 17, title: 'Physical Exercise', description: 'Engaging in physical activity releases endorphins, reduces stress, and boosts overall mood and resilience.' }],
+                    backgroundColor: '#370617' // A darker shade for contrast
+                }, {
+                    label: 'Limiting Exposure to Negativity',
+                    data: [{ x: 7, y: 4.5, r: 15, title: 'Limiting Exposure to Negativity', description: 'Consciously reducing time spent with toxic people or engaging with negative media protects your mental space.' }],
+                    backgroundColor: '#004B49' // A dark teal
+                }]
+            };
+
+            const peaceStrategiesChart = new Chart(peaceStrategiesCtx, {
+                type: 'bubble',
+                data: peaceStrategiesData,
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        x: { display: false },
+                        y: { display: false }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top', // Legend position set to top
+                            labels: {
+                                color: '#FFFFFF' // White labels for legend
+                            }
+                        },
+                        tooltip: { enabled: false } // Disable default tooltip for custom interactivity
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const element = elements[0];
+                            const datasetIndex = element.datasetIndex;
+                            const dataIndex = element.index;
+                            // THIS IS THE CORRECTED LINE: Access the data object directly
+                            const clickedData = peaceStrategiesData.datasets[datasetIndex].data[dataIndex]; 
+                            
+                            cardTitle.textContent = clickedData.title;
+                            cardDescription.textContent = clickedData.description;
+                            infoCard.classList.add('active');
+                        }
+                    }
+                }
+            });
+
+            closeCardBtn.addEventListener('click', () => {
+                infoCard.classList.remove('active');
+            });
+
+        });
+    </script>
+</body>
+</html>
